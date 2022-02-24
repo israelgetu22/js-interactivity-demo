@@ -1,24 +1,24 @@
 console.log("Javascript file successfully connected!");
 
-let count = 0;
-// grabing the necessary buttons
+// Grabbing the necessary buttons.
 const plusBtn = document.querySelector("#plus-btn");
 const resetBtn = document.querySelector("#reset-btn");
 const minusBtn = document.querySelector("#minus-btn");
+// const resetBtn = document.getElementById("reset-btn");
 
-// const resetbtn = document.getElementById("reset-btn")
-
-//Grabbing the counter text
+// Grabbing the counter text.
 const counterText = document.querySelector("#counter");
 
-//grab all the theme button
-const themeBtns = document.querySelector(".theme-buttons");
+// Grab all the theme buttons.
+const themeBtns = document.querySelectorAll(".theme-buttons");
 
-//Grab the input and input button
+// Grab the input and input button.
 const inputBox = document.querySelector("#input-box");
 const inputBtn = document.querySelector("#input-submit");
 
-// writing out necessary functions
+// Writing out the necessary functions.
+let count = 0;
+
 function increase() {
   count++;
   console.log(count);
@@ -42,25 +42,24 @@ function selectTheme(event) {
   let theme = event.target.textContent;
   document.querySelector("body").className = theme;
   document.querySelector("main").className = theme;
+
+  const buttons = document.querySelectorAll("button");
+
+  for (let i = 0; i < buttons.length; i++) {
+    buttons[i].className = theme;
+  }
 }
 
 function valueChecker() {
   console.log(inputBox.value);
 }
 
-// const buttons = document.querySelectorAll("button");
-// for (let i = 0; i < buttons.length; i++) {
-//   buttons[i].className = theme;
-// }
-
-//add event listener to my element -- event and callback
-
-plusBtn.addEventListener("click", increase); // no brace in the callback
+// Add event listener to my elements.
+plusBtn.addEventListener("click", increase);
 resetBtn.addEventListener("click", reset);
 minusBtn.addEventListener("click", decrease);
 
-// add event listeners to multiple elements using forr loop
-
+// Add event listeners to multiple elements using a for loop.
 for (let i = 0; i < themeBtns.length; i++) {
   themeBtns[i].addEventListener("click", selectTheme);
 }
